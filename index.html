@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Todo List app</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="todoapp">
+      <h3>To-Do List <span id="date">date</span></h3>
+
+      <input type="text" id="input" placeholder="Enter your Plans" />
+      <button id="addBtn">Add</button>
+
+      <ul id="unorderedList">   
+        
+      </ul>
+    </div>
+
+    <script type="text/javascript">
+      let dat = new Date();
+
+      document.getElementById("date").innerHTML = dat.toDateString();
+
+      let unOrderedList = document.getElementById('unorderedList')
+      let getlist = document.querySelector('#listgroup')
+      let todoContent = document.querySelector('#content')
+
+      
+      let input = document.querySelector('#input')
+      let btn = document.querySelector('#addBtn')
+
+      
+      // below code that perform append new list
+
+      btn.addEventListener('click',()=>{
+
+        if (input.value == ''){
+          alert('Enter your plan')
+        }else{
+
+          var listgroup = document.createElement('li')
+          listgroup.innerHTML = `<div id = 'content'><i class="fa fa-circle-o icon"></i>${input.value}</div>` 
+          listgroup.setAttribute('id','listgroup')
+          unOrderedList.appendChild(listgroup)
+          input.value =''
+          saveDataToLocalStorage()
+
+          var divCloseElem = document.createElement('div')
+          divCloseElem.innerHTML = '&times;'
+          divCloseElem.setAttribute('id','close')
+          listgroup.appendChild(divCloseElem)
+        }
+      })
+      
+      // below code that perform check and uncheck the task we added
+
+      unOrderedList.addEventListener('click',(e)=>{
+          if(e.target.id == 'content' && e.target.childNodes[0].className == 'fa fa-circle-o icon'){
+            e.target.childNodes[0].setAttribute('class','fa fa-check-circle Checkedicon')
+            e.target.style.textDecoration = 'line-through'
+            saveDataToLocalStorage()
+            console.log(e.target.childNodes[0].className) //Debug purpose
+          
+          }else if(e.target.id == 'content' && e.target.childNodes[0].className == 'fa fa-check-circle Checkedicon'){
+            e.target.childNodes[0].setAttribute('class','fa fa-circle-o icon')
+            e.target.style.textDecoration = 'none' 
+            saveDataToLocalStorage()
+
+          }else if(e.target.id == 'close'){
+            e.target.parentElement.remove()
+            saveDataToLocalStorage()
+
+          }       
+      })
+
+      // below code that perform add the list data to localstorage and fetch the data from localstorage
+
+      function saveDataToLocalStorage(){
+          localStorage.setItem('todoData',unOrderedList.innerHTML)
+      }
+
+      function fetchDataToTodo(){
+        unOrderedList.innerHTML = localStorage.getItem('todoData')
+      }
+      fetchDataToTodo()
+      
+    </script>
+  </body>
+</html>

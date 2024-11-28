@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    font-family: "Poppins", sans-serif;
+}
+
+body{
+    min-height: 100vh;
+    background: url('bgImg.jpg') center /cover no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#todoapp{
+
+    background: transparent;
+    backdrop-filter: blur(15px);
+    border: 1px solid #9ACEEB;
+    width: 500px;
+    min-height: 350px;
+    border-radius: 10px;
+    margin: 140px auto;
+}
+
+#todoapp h3{
+
+    display: flex;
+    justify-content: space-around;
+    padding:15px;
+    text-align: start;
+    font-size: x-large;
+    color: #fff;
+    font-weight: 700;
+
+}
+
+#date{
+
+    font-size: large;
+    font-weight: 800;
+    color: #ddd;
+
+
+}
+
+#input{
+
+    margin: 15px 5px 15px 30px;
+    width: 350px;
+    background: transparent;
+    padding: 8px;
+    border-radius: 50px;
+    border: 2px solid #9ACEEB ;
+    color: #fff;
+    outline: none;
+    
+}
+
+button{
+
+    width: 80px;
+    padding: 8px;
+    background-color:#9ACEEB;
+    border: none;
+    border-radius: 50px;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+
+}
+
+button:hover{
+    background-color: #fff;
+    color: #9ACEEB;
+    font-weight: 700; 
+}
+
+
+ul{  
+    padding-top: 15px;
+    list-style: none;
+}
+
+ul li{
+    font-size: large;
+    cursor: pointer;
+    position: relative;
+
+}
+
+.icon{
+    padding-right: 8px;
+    color: #f00000;
+}
+
+.Checkedicon{
+    padding-right: 8px;
+    color: #01c60e;
+}
+
+#content{
+    color: #fff;
+    font-size: 15px;
+    margin-bottom: 12px;
+}
+
+#close{
+    font-size: 20px;
+    transition: all 0.5s ease-in-out;
+}
+
+#close:hover{
+    transform: scale(1.3);
+    color: #f00000;
+}
+
+#listgroup{
+    display: flex;
+    justify-content: space-between;
+    padding:0px 30px;
+    margin-top: 5px;
+}
+
+ul span:hover{
+
+    background-color: #eee;
+    border-radius: 30%;
+    margin-right: 60px;
+}
